@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { Fragment } from "react";
 import "./App.css";
-import Navbar from "./components/layout/Navbar/Navbar";
+import Navbar from "./components/layout/Navbar";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Users from "./components/Users/Users";
-import Search from "./components/layout/Search/Search";
-import Alert from "./components/layout/Alert/Alert";
+import Search from "./components/layout/Search";
+import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import User from "./components/Users/User";
 class App extends React.Component {
