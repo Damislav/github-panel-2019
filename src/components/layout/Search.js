@@ -1,69 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "",
-    };
-  }
-  static propTypes = {
-    searchUsers: PropTypes.func.isRequired,
-    clearUsers: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired,
-    setAlert: PropTypes.func.isRequired,
-  };
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+const Search = ({ setAlert, searchUsers, showClear, clearUsers }) => {
+  const [text, setText] = useState("");
+
+  const handleChange = (e) => {
+    setText(e.target.value);
   };
 
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    if (this.state.text === "") {
-      this.props.setAlert("Please enter something", "light");
+    if (text === "") {
+      setAlert("Please enter something", "light");
     } else {
-      this.props.searchUsers(this.state.text);
-      this.setState({
-        text: "",
-      });
+      searchUsers(text);
+
+      //text to empty
+      setText("");
     }
   };
-  render() {
-    const { showClear, clearUsers } = this.props;
-    return (
-      <div>
-        <form onSubmit={this.onSubmit} className="form">
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name="text"
-            value={this.state.text}
-            placeholder="Search users"
-          />{" "}
-          <button
-            value="Submit"
-            type="submit"
-            style={{ marginBottom: ".5rem" }}
-            className="w-100 btn btn-dark btn-block  "
-          >
-            Submit
-          </button>
-        </form>
 
-        {showClear && (
-          <button
-            onClick={clearUsers}
-            className="w-100 btn btn-dark btn-block mt-2 mb-2"
-          >
-            Clear
-          </button>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <form onSubmit={onSubmit} className="form">
+        <input
+          onChange={handleChange}
+          type="text"
+          name="text"
+          value={text}
+          placeholder="Search users"
+        />{" "}
+        <button
+          value="Submit"
+          type="submit"
+          style={{ marginBottom: ".5rem" }}
+          className="w-100 btn btn-dark btn-block  "
+        >
+          Submit
+        </button>
+      </form>
 
+      {showClear && (
+        <button
+          onClick={clearUsers}
+          className="w-100 btn btn-dark btn-block mt-2 mb-2"
+        >
+          Clear
+        </button>
+      )}
+    </div>
+  );
+};
+// static propTypes = {
+//   searchUsers: PropTypes.func.isRequired,
+//   clearUsers: PropTypes.func.isRequired,
+//   showClear: PropTypes.bool.isRequired,
+//   setAlert: PropTypes.func.isRequired,
+// };
 export default Search;
