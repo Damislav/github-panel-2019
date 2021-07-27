@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+/* @import url("https://fonts.googleapis.com/css?family=Roboto"); */
 
 /* Global Styles */
 :root {
@@ -175,6 +175,9 @@ img {
 }
 .my-3 {
   margin: 3rem 0;
+}
+.mb-1 {
+  margin-bottom: 1rem;
 }
 
 /* Grid */
@@ -411,4 +414,7 @@ table th {
     text-align: center;
     justify-content: center;
   }
+}
+
+@media screen and (max-width: 480px) {
 }

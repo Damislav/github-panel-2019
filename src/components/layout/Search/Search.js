@@ -37,7 +37,6 @@ class Search extends React.Component {
       <div>
         <form onSubmit={this.onSubmit} className="form">
           <input
-            className="m-2 form-control"
             onChange={this.handleChange}
             type="text"
             name="text"
@@ -47,7 +46,8 @@ class Search extends React.Component {
           <button
             value="Submit"
             type="submit"
-            className="w-100 btn btn-dark btn-block"
+            style={{ marginBottom: ".5rem" }}
+            className="w-100 btn btn-dark btn-block  "
           >
             Submit
           </button>
