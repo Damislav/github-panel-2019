@@ -1,54 +1,37 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
-  const authLinks = (
-    <ul>
-      <li>
-        <Link to="/profiles">Developers</Link>
-      </li>
-      <li>
-        <Link to="/posts">Posts</Link>
-      </li>
-      <li>
-        <Link to="/dashboard">
-          <i className="fas fa-user" />{" "}
-          <span className="hide-sm">Dashboard</span>
-        </Link>
-      </li>
-      <li>
-        <a href="#!">
-          <i className="fas fa-sign-out-alt" />{" "}
-          <span className="hide-sm">Logout</span>
-        </a>
-      </li>
-    </ul>
-  );
-
-  const guestLinks = (
-    <ul>
-      <li>
-        <Link to="/profiles">Developers</Link>
-      </li>
-      <li>
-        <Link to="/register">Register</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-    </ul>
-  );
-
+const Navbar = ({ icon, title }) => {
   return (
-    <nav className="navbar bg-dark">
+    <nav className="navbar bg-danger">
       <h1>
-        <Link to="/">
-          <i className="fas fa-code" /> DevConnector
+        <Link style={{ textDecoration: "none" }} to="/">
+          <i className={icon}>{title}</i>
         </Link>
       </h1>
-      {/* <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment> */}
+      <ul style={{ display: "flex", listStyle: "none" }}>
+        <li>
+          <Link className="p-2" to="/">
+            Home
+          </Link>
+        </li>{" "}
+        <li>
+          <Link className="p-2  " to="/about">
+            About
+          </Link>
+        </li>
+      </ul>
     </nav>
   );
 };
 
+Navbar.defaultProps = {
+  title: "Github Finder",
+  icon: "fab fa-github",
+};
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+};
 export default Navbar;
