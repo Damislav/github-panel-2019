@@ -8,6 +8,7 @@ import {
   CLEAR_USERS,
   GET_USER,
   GET_REPOS,
+  GET_RANDOM_USERS,
 } from "../types";
 
 let githubClientId;
@@ -31,11 +32,13 @@ const GithubState = (props) => {
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
-  const fetchOnLoad = async (users) => {
-      const res = await axios.get(
-        `https://api.github.com/search/users?q=${text}&client_id=${githubClientId}&client_secret=${githubClientSecret}`
-      );
-  }
+  // not sure how to make this with this weird context stuff
+  // const fetchOnLoad = async () => {
+  //   const res = await axios.get(
+  //     `https://api.github.com/search/users?client_id=${githubClientId}&client_secret=${githubClientSecret}`
+  //   );
+  //   dispatch({ type: GET_RANDOM_USERS, payload: res.data.items });
+  // };
   // Search Users
   const searchUsers = async (text) => {
     setLoading();
