@@ -6,10 +6,8 @@ import GithubContext from "../../context/github/githubContext";
 const Users = () => {
   const githubContext = useContext(GithubContext);
 
-  const { users, loading, fetchOnLoad } = githubContext;
-  useEffect(() => {
-    fetchOnLoad();
-  }, []);
+  const { users, loading } = githubContext;
+
   if (loading) {
     return <Spinner />;
   } else {

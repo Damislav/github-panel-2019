@@ -92,7 +92,6 @@ const GithubState = (props) => {
         clearUsers,
         getUser,
         getUserRepos,
-        fetchOnLoad,
       }}
     >
       {props.children}
