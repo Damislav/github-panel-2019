@@ -9,7 +9,9 @@ import GithubState from "./context/github/GithubState";
 import Home from "./components/pages/Home";
 import AlertState from "./context/alert/AlertState";
 import NotFound from "./components/pages/NotFound";
+
 const App = () => {
+  
   return (
     <GithubState>
       <AlertState>
